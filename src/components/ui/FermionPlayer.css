@@ -1,0 +1,248 @@
+/* Fermion Player Styles */
+
+.fermion-player-container {
+  width: 100%;
+  background: var(--surface-primary, #ffffff);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin: var(--space-4) 0;
+  animation: slideInUp 0.3s ease-out;
+}
+
+/* Header */
+.fermion-player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4);
+  background: linear-gradient(
+    135deg,
+    var(--primary-50, #f0f7ff) 0%,
+    var(--secondary-50, #f8f4ff) 100%
+  );
+  border-bottom: 1px solid var(--border-subtle, #e8e8e8);
+}
+
+.fermion-player-header h3 {
+  margin: 0;
+  font-size: var(--text-lg, 1.125rem);
+  font-weight: 600;
+  color: var(--text-primary, #1a1a1a);
+}
+
+/* Session Status */
+.fermion-session-status {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: 20px;
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.status-badge.status-live {
+  background: #fecaca;
+  color: #991b1b;
+  animation: pulse 2s infinite;
+}
+
+.status-badge.status-completed {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.status-scheduled {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.status-unknown {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* IFrame Container */
+.fermion-player-iframe-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.fermion-player-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Footer */
+.fermion-player-footer {
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-secondary, #f9f9f9);
+  border-top: 1px solid var(--border-subtle, #e8e8e8);
+}
+
+.fermion-disclaimer {
+  margin: 0;
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--text-tertiary, #666666);
+  line-height: 1.5;
+}
+
+/* Loading State */
+.fermion-player-container.fermion-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #f3f4f6 100%);
+}
+
+.fermion-loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--primary-100, #e0e7ff);
+  border-top-color: var(--primary-500, #6366f1);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fermion-loading-spinner p {
+  margin: 0;
+  color: var(--text-secondary, #555555);
+  font-weight: 500;
+}
+
+/* Error State */
+.fermion-player-container.fermion-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+  border: 2px solid #fecaca;
+}
+
+.fermion-error-content {
+  text-align: center;
+  padding: var(--space-5);
+  max-width: 400px;
+}
+
+.fermion-error-icon {
+  font-size: 48px;
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.fermion-error-content h3 {
+  margin: 0 0 var(--space-2) 0;
+  font-size: var(--text-lg, 1.125rem);
+  color: #991b1b;
+}
+
+.fermion-error-content p {
+  margin: 0 0 var(--space-2) 0;
+  color: #7f1d1d;
+  line-height: 1.5;
+}
+
+.fermion-error-hint {
+  font-size: var(--text-sm, 0.875rem) !important;
+  color: #9b2c2c !important;
+  margin-top: var(--space-3) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .fermion-player-header {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .fermion-session-status {
+    align-self: flex-start;
+  }
+
+  .fermion-player-iframe-container {
+    min-height: 300px;
+    padding-bottom: 56.25%;
+  }
+
+  .fermion-player-footer {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .fermion-disclaimer {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fermion-player-container {
+    margin: var(--space-2) 0;
+    border-radius: 8px;
+  }
+
+  .fermion-player-header,
+  .fermion-player-footer {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .fermion-player-header h3 {
+    font-size: var(--text-base, 1rem);
+  }
+
+  .status-badge {
+    padding: var(--space-1) var(--space-2);
+    font-size: 0.75rem;
+  }
+
+  .fermion-error-content {
+    padding: var(--space-4);
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+  }
+}
